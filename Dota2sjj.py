@@ -7,7 +7,6 @@ import glob
 '''
 # ============================================
 
-
 # ================== 基础定义 ==================
 # 输入文件夹
 inputPath = r'D:\Datasets\DOTA-sample'
@@ -39,8 +38,8 @@ for file in fileList:
     # 原始文件的地址。例：D:\Datasets\DOTA-sample\P0000.txt
     fromFile = os.path.join(inputPath, file)
 
-    # 生成的地址，例：D:\ZTEST\P0000.json 第一行直接通过字符串批量替换为JSON格式，注意，这个地方需要原始txt中没有json字样。
-    toFile = os.path.join(outputPath, file.replace("txt", "json"))
+    # 生成的地址，例：D:\ZTEST\P0000.json 取得原始文件后缀(.txt)，将后缀替换为.json。
+    toFile = os.path.join(outputPath, file.replace(os.path.splitext(file)[-1], ".json"))
 
     # 查看待生成的目录（尤其针对深层次目录的情况）是否存在，如果不存在则新建目录
     if not os.path.exists(os.path.dirname(toFile)):
